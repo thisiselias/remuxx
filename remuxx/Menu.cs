@@ -34,7 +34,7 @@ namespace remuxx
 
                                 using (RegistryKey commandKey = formatKey.CreateSubKey("command"))
                                 {
-                                    commandKey.SetValue("", Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) + $"\\remuxx.exe {format} %1");
+                                    commandKey.SetValue("", Environment.ProcessPath + $" {format} %1");
                                 }
                             }
                         }
@@ -56,21 +56,29 @@ namespace remuxx
 
         private void UpdateInstallLabel()
         {
-            string remuxx = @"*\shell\remuxx";
-            using (RegistryKey key = Registry.ClassesRoot.OpenSubKey(remuxx, true))
+            try
             {
-                if (key != null)
+                string remuxx = @"*\shell\remuxx";
+                using (RegistryKey key = Registry.ClassesRoot.OpenSubKey(remuxx, true))
                 {
-                    InstallLabel.Text = "Installed! ^w^";
-                    InstallButton.Enabled = false;
-                    UninstallButton.Enabled = true;
+                    if (key != null)
+                    {
+                        InstallLabel.Text = "Enabled! :3";
+                        InstallButton.Enabled = false;
+                        UninstallButton.Enabled = true;
+                    }
+                    else
+                    {
+                        InstallLabel.Text = "Disabled :<";
+                        InstallButton.Enabled = true;
+                        UninstallButton.Enabled = false;
+                    }
                 }
-                else
-                {
-                    InstallLabel.Text = "Not installed :<";
-                    InstallButton.Enabled = true;
-                    UninstallButton.Enabled = false;
-                }
+            }
+            catch
+            {
+                MessageBox.Show("An error occurred: Please run as Administrator");
+                Environment.Exit(0);
             }
         }
 

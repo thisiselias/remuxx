@@ -41,7 +41,7 @@
             InstallButton.Name = "InstallButton";
             InstallButton.Size = new Size(75, 32);
             InstallButton.TabIndex = 0;
-            InstallButton.Text = "Install";
+            InstallButton.Text = "Enable";
             InstallButton.UseVisualStyleBackColor = true;
             InstallButton.Click += InstallButton_Click;
             // 
@@ -51,7 +51,7 @@
             UninstallButton.Name = "UninstallButton";
             UninstallButton.Size = new Size(75, 32);
             UninstallButton.TabIndex = 0;
-            UninstallButton.Text = "Uninstall";
+            UninstallButton.Text = "Disable";
             UninstallButton.UseVisualStyleBackColor = true;
             UninstallButton.Click += UninstallButton_Click;
             // 
@@ -81,9 +81,9 @@
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(146, 25);
+            label1.Size = new Size(74, 25);
             label1.TabIndex = 3;
-            label1.Text = "remuxx installer";
+            label1.Text = "remuxx";
             // 
             // Menu
             // 
