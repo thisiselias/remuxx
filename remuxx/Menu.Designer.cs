@@ -31,7 +31,7 @@
             InstallButton = new Button();
             UninstallButton = new Button();
             InstallLabel = new Label();
-            linkLabel1 = new LinkLabel();
+            GitHubLink = new LinkLabel();
             label1 = new Label();
             SuspendLayout();
             // 
@@ -64,15 +64,16 @@
             InstallLabel.TabIndex = 1;
             InstallLabel.Text = "crazy easter egg";
             // 
-            // linkLabel1
+            // GitHubLink
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(15, 34);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(110, 15);
-            linkLabel1.TabIndex = 2;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "by sillycatmoments";
+            GitHubLink.AutoSize = true;
+            GitHubLink.Location = new Point(15, 34);
+            GitHubLink.Name = "GitHubLink";
+            GitHubLink.Size = new Size(110, 15);
+            GitHubLink.TabIndex = 2;
+            GitHubLink.TabStop = true;
+            GitHubLink.Text = "by sillycatmoments";
+            GitHubLink.LinkClicked += GitHubLink_LinkClicked;
             // 
             // label1
             // 
@@ -90,7 +91,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(189, 121);
             Controls.Add(label1);
-            Controls.Add(linkLabel1);
+            Controls.Add(GitHubLink);
             Controls.Add(InstallLabel);
             Controls.Add(UninstallButton);
             Controls.Add(InstallButton);
@@ -105,7 +106,7 @@
         private Button InstallButton;
         private Button UninstallButton;
         private Label InstallLabel;
-        private LinkLabel linkLabel1;
+        private LinkLabel GitHubLink;
         private Label label1;
     }
 }

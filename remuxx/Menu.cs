@@ -1,5 +1,6 @@
 using System.Drawing.Text;
 using System.Reflection;
+using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace remuxx
@@ -72,6 +73,11 @@ namespace remuxx
                     UninstallButton.Enabled = false;
                 }
             }
+        }
+
+        private void GitHubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("explorer", "https://github.com/sillycatmoments");
         }
     }
 }

@@ -17,8 +17,6 @@ namespace remuxx
                     path += args[i] + " ";
                 }
 
-                //MessageBox.Show(format, path);
-
                 if (File.Exists(path))
                 {
                     ConvertFile(path, format);
@@ -27,8 +25,6 @@ namespace remuxx
                 }
 
             }
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Menu());
         }
