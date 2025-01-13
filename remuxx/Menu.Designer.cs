@@ -37,7 +37,7 @@
             // 
             // InstallButton
             // 
-            InstallButton.Location = new Point(39, 61);
+            InstallButton.Location = new Point(19, 57);
             InstallButton.Name = "InstallButton";
             InstallButton.Size = new Size(75, 32);
             InstallButton.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             // UninstallButton
             // 
-            UninstallButton.Location = new Point(115, 61);
+            UninstallButton.Location = new Point(95, 57);
             UninstallButton.Name = "UninstallButton";
             UninstallButton.Size = new Size(75, 32);
             UninstallButton.TabIndex = 0;
@@ -58,7 +58,7 @@
             // InstallLabel
             // 
             InstallLabel.AutoSize = true;
-            InstallLabel.Location = new Point(39, 96);
+            InstallLabel.Location = new Point(19, 92);
             InstallLabel.Name = "InstallLabel";
             InstallLabel.Size = new Size(91, 15);
             InstallLabel.TabIndex = 1;
@@ -88,7 +88,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(275, 162);
+            ClientSize = new Size(189, 121);
             Controls.Add(label1);
             Controls.Add(linkLabel1);
             Controls.Add(InstallLabel);
