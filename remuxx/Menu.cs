@@ -1,21 +1,18 @@
-using System.Diagnostics;
+using System.Drawing.Text;
 using System.Reflection;
 using Microsoft.Win32;
-using static System.Windows.Forms.DataFormats;
 
 namespace remuxx
 {
-    public partial class Form1 : Form
+    public partial class Menu : Form
     {
-        public Form1()
+        public Menu()
         {
-
             InitializeComponent();
-            InitRegistry();
-
+            UpdateInstallLabel();
         }
 
-        private void InitRegistry()
+        private void InstallButton_Click(object sender, EventArgs e)
         {
             string regPath = @"*\shell\remuxx";
             string[] formatList = new string[] { "mp3", "wav", "ogg", "m4a", "wma", "flac", "aac" };
@@ -44,36 +41,37 @@ namespace remuxx
                     }
                 }
             }
+            UpdateInstallLabel();
         }
 
-        private void ConvertButton_Click(object sender, EventArgs e)
+        private void UninstallButton_Click(object sender, EventArgs e)
         {
-            ConvertFileDialog(".ogg");
-        }
-
-        private void ConvertFileDialog(string format)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Audio Files|*.mp3;*.wav;*.flac;*.aac;*.ogg;*.m4a;*.wma";
-            openFileDialog.Multiselect = true;
-
-            DialogResult result = openFileDialog.ShowDialog();
-            foreach (string file in openFileDialog.FileNames)
+            string remuxx = @"*\shell";
+            using (RegistryKey key = Registry.ClassesRoot.OpenSubKey(remuxx, true))
             {
-                ConvertFile(file, format);
+                key.DeleteSubKeyTree("remuxx");
             }
+            UpdateInstallLabel();
         }
 
-        private void ConvertFile(string inputFile, string format)
+        private void UpdateInstallLabel()
         {
-            ProcessStartInfo processArgs = new ProcessStartInfo();
-
-            processArgs.FileName = "ffmpeg";
-            processArgs.Arguments = "-i \"" + inputFile + "\" \"" + inputFile + "\"" + format;
-            processArgs.UseShellExecute = false;
-            processArgs.CreateNoWindow = true;
-
-            Process.Start(processArgs);
+            string remuxx = @"*\shell\remuxx";
+            using (RegistryKey key = Registry.ClassesRoot.OpenSubKey(remuxx, true))
+            {
+                if (key != null)
+                {
+                    InstallLabel.Text = "Installed! ^w^";
+                    InstallButton.Enabled = false;
+                    UninstallButton.Enabled = true;
+                }
+                else
+                {
+                    InstallLabel.Text = "Not installed :<";
+                    InstallButton.Enabled = true;
+                    UninstallButton.Enabled = false;
+                }
+            }
         }
     }
 }
