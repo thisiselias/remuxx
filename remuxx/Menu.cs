@@ -26,7 +26,6 @@ namespace remuxx
 
                     using (RegistryKey shellKey = key.CreateSubKey("shell"))
                     {
-
                         foreach (string format in formatList)
                         {
                             using (RegistryKey formatKey = shellKey.CreateSubKey(format))
